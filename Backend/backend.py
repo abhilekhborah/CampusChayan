@@ -15,7 +15,7 @@ import os
 from dotenv import load_dotenv
 
 
-loader = TextLoader("/Users/deltae/Repos/CampusChayan/Backend/Document/sih '24 - govt of raj rti handbook v1.0.txt")
+loader = TextLoader("/Users/apple/Desktop/CampusChayan/Backend/Document/sih '24 - govt of raj rti handbook v1.0.txt")
 documents = loader.load()
 
 
@@ -67,10 +67,8 @@ Remember to maintain a professional and informative tone throughout your respons
 
 
 embed = VoyageEmbeddings(model="voyage-large-2-instruct")
-vector_db = FAISS.from_documents(
-    docs,
-    embedding=embed,
-    persist_directory="campuschayan-db"
+vector_db = FAISS.load_local(
+    "chayan_db", embed, allow_dangerous_deserialization=True
 )
 
 
