@@ -1,0 +1,111 @@
+@import url('https://fonts.cdnfonts.com/css/sf-pro-display');
+
+.font-sfpro {
+    font-family: 'SF Pro Display', sans-serif;
+  }
+
+  .animated-text{
+    min-width: 280px;
+    padding: 5px;
+}
+
+.animated-text span{
+    position: relative;
+}
+
+.animated-text span::before{
+    content: "Your future starts here. Get instant answers to all your admissions questions with our AI-powered chatbot";
+    color: #5C5C5C;
+    animation: words 25s infinite;
+}
+
+.animated-text span::after{
+    content: "";
+    position: absolute;
+    width: calc(100% + 20px);
+    height: 120%;
+    background-color: #0f0f0f;
+    border-left: 2px solid #C853FF;
+    right: -8px;
+    animation: cursor 1s infinite, typing 20s steps(40) infinite;
+}
+
+@keyframes cursor {
+    to{
+        border-left: 2px solid #ff7f5000;
+    }
+}
+
+@keyframes words {
+    0%,33%{
+        content:"We transform your content, tailoring it to your specific needs and preferences.       ";
+    }
+    34%,66%{
+        content:"Your future starts here. Get instant answers to all your admissions questions with our AI-powered chatbot.        ";
+    }
+    67%,100%{
+        content: " From eligibility, college selection to placements, we've got you covered 24/7.      ";
+    }
+}
+
+@keyframes typing {
+    10%,30%,50%,70%,90%{
+        width: 0;
+    }
+    20%,25%,40%,60%,65%,80%,85%{
+        width: calc(100% + 5px);
+    }
+}
+
+.recommend:hover{
+    background-color: #1f1f1f;
+    transform: scale(1.01);
+    border: 1px solid white;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    transition: all 0.2s ease;
+}
+
+.search:focus{
+    background-color: #1f1f1f;
+    border: 1px solid #C853FF;
+    box-shadow: 0 0 10px rgba(140, 76, 217, 0.8);
+    transition: all 0.2s ease;
+}
+
+.sidebar.active ~ .content{
+    left: 50vw;
+    transform: translateX(10vw);
+    transition : all 0.5s ease;
+
+}
+
+.content{
+    transition: all 0.5s ease;
+}
+.sidebar{   
+    transition: all 0.5s ease;
+    width: 10vw;
+}
+
+
+.sidebar.active{
+    width: 20vw;
+
+}
+
+.recommend.sources:hover{
+    background: #1f1f1f;
+    border: none;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+}
+.content{
+    transition: all 0.5s ease;
+    margin-top:-96vh;
+    top:0;
+
+}
+
+.logo.active{
+    content:"";
+    
+}
