@@ -7,3 +7,4 @@ python-dotenv
 langchain-groq 
 faiss-cpu 
 voyageai
+flask
