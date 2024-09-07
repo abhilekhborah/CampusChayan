@@ -1,0 +1,9 @@
+langchain 
+langchain-community 
+langchain-voyageai 
+groq 
+langchain-text-splitters 
+python-dotenv 
+langchain-groq 
+faiss-cpu 
+voyageai
