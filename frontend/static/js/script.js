@@ -23,8 +23,8 @@ const recommends = document.querySelectorAll(".rec");
 //     }
 // }
 
-async function handleInput(inputElement) {
-    const userMessage = inputElement.value.trim();
+async function handleInput(input) {
+    const userMessage = typeof input === 'string' ? input.trim() : input.value?.trim();
     if (userMessage) {
         right2.style.display = "block";
         right1.style.display = "none";
@@ -42,21 +42,44 @@ async function handleInput(inputElement) {
         
         // Create HTML content
         let htmlContent = `
-            <h3>Answer:</h3>
+            <h3>Here is the answer to your query: </h3>
             <p>${answer}</p>
-            <h3>Hindi Translation:</h3>
+            <h3>यह आपके प्रश्न का उत्तर है</h3>
             <p>${hindiTranslation}</p>
-            <h3>Recommended Questions:</h3>
-            <ol>
-                ${recommendedQuestions.map(q => `<li>${q.replace(/^\d+\.\s/, '')}</li>`).join('')}
-            </ol>
         `;
-        
+
+        displayQuestions(recommendedQuestions);
         solution.innerHTML = htmlContent;
         console.log(result);
-        inputElement.value = ""; 
+        if (input.value) input.value = ""; 
     }
 }
+
+// Event listeners for recommendation clicks
+recommends.forEach(recommend => {
+    recommend.addEventListener("click", async () => {
+        const questionInputs = recommend.textContent;
+        handleInput(questionInputs);
+    });
+});
+
+async function displayQuestions(recommendedQuestions) {
+    const questionDivs = document.querySelectorAll('.question-box');
+    
+    for (let index = 0; index < questionDivs.length && index < recommendedQuestions.length; index++) {
+        const questionDiv = questionDivs[index];
+        const recommendedQuestion = recommendedQuestions[index].trim();
+        
+        questionDiv.innerHTML = `
+            <h3>Related Search ${index + 1}</h3>
+            <p>${recommendedQuestion}</p>
+        `;
+        
+        // Add click event listener to each question div
+        questionDiv.addEventListener('click', () => handleInput(recommendedQuestion));
+    }
+}
+
 
 // Event listeners for submit buttons
 submitBtn.addEventListener("click", () => handleInput(questionInput));
@@ -70,8 +93,8 @@ recommends.forEach(recommend => {
         right1.style.display = "none";
 
         question.innerHTML = questionInputs;
-        const result = await postData("/query", {"question": userMessage});
-        solution.innerHTML = result.answer;
+        const result = await postData("/query", {"question": questionInputs});
+        handleInput(questionInputs);
     });
 });
 
