@@ -7,8 +7,7 @@ Original file is located at
 from langchain_community.document_loaders import TextLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_groq import ChatGroq
-from langchain_community.embeddings import VoyageEmbeddings
-from langchain_community.vectorstores import FAISS
+from langchain_voyageai import VoyageAIEmbeddings
 from langchain.prompts import PromptTemplate
 from langchain.chains import RetrievalQA
 import os
@@ -66,7 +65,7 @@ Remember to maintain a professional and informative tone throughout your respons
 """
 
 
-embed = VoyageEmbeddings(model="voyage-large-2-instruct")
+embed = VoyageAIEmbeddings(model="voyage-large-2-instruct")
 vector_db = FAISS.load_local(
     "chayan_db", embed, allow_dangerous_deserialization=True
 )

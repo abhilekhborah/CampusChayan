@@ -9,17 +9,52 @@ const right1 = document.querySelector(".right1");
 const right2 = document.querySelector(".right2");
 const recommends = document.querySelectorAll(".rec");
 
-// Function to handle user input and API call
+// async function handleInput(inputElement) {
+//     const userMessage = inputElement.value.trim();
+//     if (userMessage) {
+//         right2.style.display = "block";
+//         right1.style.display = "none";
+
+//         question.innerHTML = userMessage;
+//         const result = await postData("/query", {"question": userMessage});
+//         solution.innerHTML = result.answer;
+//         console.log(result);
+//         inputElement.value = ""; 
+//     }
+// }
+
 async function handleInput(inputElement) {
     const userMessage = inputElement.value.trim();
     if (userMessage) {
-        inputElement.value = "";
         right2.style.display = "block";
         right1.style.display = "none";
 
         question.innerHTML = userMessage;
-        const result = await postData("/api", {"question": userMessage});
-        solution.innerHTML = result.answer;
+        const result = await postData("/query", {"question": userMessage});
+        
+        // Split the result into sections
+        const sections = result.result.split('\n\n');
+        
+        // Extract each section
+        const answer = sections[0].replace('Answer: ', '');
+        const hindiTranslation = sections[1].replace('Hindi Translation: ', '');
+        const recommendedQuestions = sections[2].replace('Recommended Questions:\n', '').split('\n');
+        
+        // Create HTML content
+        let htmlContent = `
+            <h3>Answer:</h3>
+            <p>${answer}</p>
+            <h3>Hindi Translation:</h3>
+            <p>${hindiTranslation}</p>
+            <h3>Recommended Questions:</h3>
+            <ol>
+                ${recommendedQuestions.map(q => `<li>${q.replace(/^\d+\.\s/, '')}</li>`).join('')}
+            </ol>
+        `;
+        
+        solution.innerHTML = htmlContent;
+        console.log(result);
+        inputElement.value = ""; 
     }
 }
 
@@ -35,7 +70,7 @@ recommends.forEach(recommend => {
         right1.style.display = "none";
 
         question.innerHTML = questionInputs;
-        const result = await postData("/api", {"question": questionInputs});
+        const result = await postData("/query", {"question": userMessage});
         solution.innerHTML = result.answer;
     });
 });

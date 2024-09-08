@@ -1,17 +1,26 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
+from flask_cors import CORS
+import os
+import logging
+
 from langchain_community.document_loaders import TextLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_groq import ChatGroq
-from langchain_community.embeddings import VoyageEmbeddings
+from langchain_voyageai import VoyageAIEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain.prompts import PromptTemplate
 from langchain.chains import RetrievalQA
 import os
 from dotenv import load_dotenv
 
-app = Flask(__name__)
 
+app = Flask(__name__, static_folder='../frontend/static')
+CORS(app)
 # Load environment variables
+
+logging.basicConfig(level=logging.DEBUG)
+
+
 load_dotenv()
 GROQ_API_KEY = os.environ["GROQ_API_KEY"]
 VOYAGE_API_KEY = os.environ["VOYAGE_API_KEY"]
@@ -62,7 +71,7 @@ Remember to maintain a professional and informative tone throughout your respons
 """
 
 # Initialize embeddings and vector store
-embed = VoyageEmbeddings(model="voyage-large-2-instruct")
+embed = VoyageAIEmbeddings(model="voyage-large-2-instruct")
 vector_db = FAISS.load_local("chayan_db", embed, allow_dangerous_deserialization=True)
 
 # Create prompt and retriever
@@ -86,7 +95,27 @@ def query_documents():
         result = chain({"query": question})
         return jsonify({"result": result["result"]})
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        app.logger.error(f"An error occurred: {str(e)}", exc_info=True)
+        return jsonify({"error": "An internal server error occurred"}), 500
+
+# Serve the main HTML file
+@app.route('/')
+def serve_index():
+    return send_from_directory('../frontend/templates', 'index.html')
+
+# Serve static files
+@app.route('/static/<path:path>')
+def serve_static(path):
+    return send_from_directory('../frontend/static', path)
+
+# Your existing API route
+@app.route('/api', methods=['POST'])
+def handle_query():
+    data = request.json
+    question = data.get('question', '')
+    # Your existing logic to process the question and generate an answer
+    answer = "This is a placeholder answer for: " + question
+    return jsonify({"answer": answer})
 
 if __name__ == '__main__':
     app.run(debug=True)
