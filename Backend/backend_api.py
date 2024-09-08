@@ -26,16 +26,16 @@ GROQ_API_KEY = os.environ["GROQ_API_KEY"]
 VOYAGE_API_KEY = os.environ["VOYAGE_API_KEY"]
 
 # Initialize document loading and splitting
-loader = TextLoader("/Users/apple/Desktop/CampusChayan/Backend/Document/sih '24 - govt of raj rti handbook v1.0.txt")
-documents = loader.load()
+# loader = TextLoader("/Users/apple/Desktop/CampusChayan/Backend/Document/sih '24 - govt of raj rti handbook v1.0.txt")
+# documents = loader.load()
 
-text_splitter = RecursiveCharacterTextSplitter(
-    chunk_size=512,
-    chunk_overlap=50,
-    length_function=len,
-    is_separator_regex=False,
-)
-docs = text_splitter.split_documents(documents)
+# text_splitter = RecursiveCharacterTextSplitter(
+#     chunk_size=512,
+#     chunk_overlap=50,
+#     length_function=len,
+#     is_separator_regex=False,
+# )
+# docs = text_splitter.split_documents(documents)
 
 # Initialize LLM
 llm = ChatGroq(

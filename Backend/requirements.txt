@@ -8,3 +8,4 @@ langchain-groq
 faiss-cpu 
 voyageai
 flask
+Flask-Cors
