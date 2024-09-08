@@ -714,6 +714,14 @@ video {
   height: 7vh;
 }
 
+.min-h-4 {
+  min-height: 1rem;
+}
+
+.min-h-10 {
+  min-height: 2.5rem;
+}
+
 .w-\[60vw\] {
   width: 60vw;
 }
