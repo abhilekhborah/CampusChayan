@@ -58,7 +58,7 @@ async function handleInput(input) {
 // Event listeners for recommendation clicks
 recommends.forEach(recommend => {
     recommend.addEventListener("click", async () => {
-        const questionInputs = recommend.textContent;
+        const questionInputs = recommend.querySelector('p').textContent;
         handleInput(questionInputs);
     });
 });
@@ -71,7 +71,7 @@ async function displayQuestions(recommendedQuestions) {
         const recommendedQuestion = recommendedQuestions[index].trim();
         
         questionDiv.innerHTML = `
-            <h3>Related Search ${index + 1}</h3>
+            <h3>Related Searches</h3>
             <p>${recommendedQuestion}</p>
         `;
         

@@ -51,12 +51,12 @@
 
 
 
-    <div class="flex justify-content text-white font-sfpro bg-[#151515] h-[100vh] right2">
+    <div class="flex justify-content text-white font-sfpro bg-[#151515] h-[100vh] right2 overflow-hidden">
         <div class="sidebar bg-[#0f0f0f]">
             <div class="logo m-auto py-10 ml-10">
                 <img class = "logo" src = "/static/assets/sidebarlogo.svg"/> 
 
-                <a href = "/templates/index.html"><img class = "py-20 newthread" src = "/static/assets/threadcollapsed.png"/></a>
+                <a href = "/"><img class = "py-20 newthread" src = "/static/assets/threadcollapsed.png"/></a>
                 <img class = "maxbtn pt-60 mt-20 "src = "/static/assets/collapse.svg"/>
             </div>
         </div>
@@ -68,34 +68,29 @@
                     <h2 class="text-xl font-light ml-2">Sources</h2>
                 </div>
                 <div class="flex space-x-2 py-2">
-                    <div class="bg-[#272727] rounded-[10px] px-4  py-2 recommend sources w-fit">
-                        <p class="text-md px-3">Source</p>
+                    <a href = "https://dte.rajasthan.gov.in/assets/docs/RTI/Handbook%20RTI.pdf" target="_blank">
+                        <div class="bg-[#272727] rounded-[10px] px-4  py-2 recommend sources w-fit">
+                        <p class="text-md px-3">Official RTI Handbook</p>
                         <div class="flex pt-1">
-                        <img class =" newthread pr-3 h-4 mt-1" src = "/static/assets/sources.svg"/>
-                        <p class="text-sm">en.wikipedia.in</p>
-                        </div>  
-                    </div>
-                    <div class="bg-[#272727] rounded-[10px] px-4  py-2 recommend sources w-fit">
-                        <p class="text-md px-3">Source</p>
+                        <img class =" newthread pr-3 h-4 mt-3" src = "/static/assets/sources.svg"/>
+                        <p class="text-sm pt-2">https://dte.rajastha...</p>
+                        </div>
+                        </div>
+                    </a>
+                    <a href = "https://dteapp.hte.rajasthan.gov.in/dte_admission/admission/index/1" target="_blank">
+                        <div class="bg-[#272727] rounded-[10px] px-4  py-2 recommend sources w-fit">
+                        <p class="text-md px-3">Official Website</p>
                         <div class="flex pt-1">
-                        <img class ="pr-3 h-4 mt-1" src = "/static/assets/sources.svg"/>
-                        <p class="text-sm">en.wikipedia.in</p>
-                        </div>  
-                    </div>
-                    <div class="bg-[#272727] rounded-[10px] px-4  py-2 recommend sources w-fit">
-                        <p class="text-md px-3">Source</p>
-                        <div class="flex pt-1">
-                        <img class ="pr-3 h-4 mt-1" src = "/static/assets/sources.svg"/>
-                        <p class="text-sm">en.wikipedia.in</p>
-                        </div>  
-                    </div>
-                    <div class="bg-[#272727] rounded-[10px] px-4  py-2 recommend sources w-fit">
-                        <p class="text-md px-3">Source</p>
-                        <div class="flex pt-1">
-                        <img class ="pr-3 h-4 mt-1" src = "/static/assets/sources.svg"/>
-                        <p class="text-sm">en.wikipedia.in</p>
-                        </div>  
-                    </div> 
+                        <img class =" newthread pr-3 h-4 mt-3" src = "/static/assets/sources.svg"/>
+                        <p class="text-sm pt-2">https://dteapp.hte.ra...</p>
+                        </div>
+                    </a>
+
+
+                </div>
+                    
+                    
+                    
                 </div>
             </div>
             <div class="bg-[#272727] p-4 rounded-lg h-[40vh] overflow-auto" id="solution">
@@ -107,25 +102,26 @@
                     <img src = "/static/assets/send.svg"/>
                 </button>
             </div>
-            <div class="flex space-x-2 py-2">
-                <div class="rec bg-[#272727] rounded-[10px] px-4 recommend sources w-fit flex justify-between">
-                    <p class=" question-box text-md px-3 py-2">Loading Recommended Searches...</p>
+            <div class="flex space-x-2 py-2 h-[15vh]">
+                <div class="rec bg-[#272727] rounded-[10px] px-4 recommend sources w-fit flex justify-between overflow-y-auto overflow-ellipsis custom-scrollbar">
+                    <p class=" question-box text-md px-2 pr-3 py-2">Loading Recommended Searches... </p>  
                     <div class="flex pt-1">
-                    <img class ="pr-5 h-8 " src = "/static/assets/arrow.svg"/>
-                    </div>  
+                        <img class ="pr-5 h-8 " src = "/static/assets/arrow.svg"/>
+                        </div> 
                 </div>
-                <div class="rec bg-[#272727] rounded-[10px] px-4 recommend sources w-fit flex justify-between">
-                    <p class="question-box text-md px-3 py-2">Loading Recommended Searches...</p>
+                <div class="rec bg-[#272727] rounded-[10px] px-4 recommend sources w-fit flex justify-between overflow-y-auto overflow-ellipsis custom-scrollbar">
+                    <p class=" question-box text-md px-3 py-2">Loading Recommended Searches...  </p>  
                     <div class="flex pt-1">
-                    <img class ="pr-5 h-8 " src = "/static/assets/arrow.svg"/>
-                    </div>  
+                        <img class ="pr-5 h-8 " src = "/static/assets/arrow.svg"/>
+                        </div> 
                 </div>
-                <div class=" rec bg-[#272727] rounded-[10px] px-4 recommend sources w-fit flex justify-between">
-                    <p class="question-box text-md px-3 py-2 ">Loading Recommended Searches...</p>
+                <div class="rec bg-[#272727] rounded-[10px] px-4 recommend sources w-fit flex justify-between overflow-y-auto overflow-ellipsis custom-scrollbar">
+                    <p class=" question-box text-md px-3 py-2">Loading Recommended Searches... </p>  
                     <div class="flex pt-1">
-                    <img class ="pr-5 h-8 " src = "/static/assets/arrow.svg"/>
-                    </div>  
+                        <img class ="pr-5 h-8 " src = "/static/assets/arrow.svg"/>
+                        </div> 
                 </div>
+                
                 
             </div>
         </div>

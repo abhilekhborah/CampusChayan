@@ -100,7 +100,7 @@
 }
 .content{
     transition: all 0.5s ease;
-    margin-top:-96vh;
+    margin-top:-99vh;
     top:0;
 
 }
@@ -109,3 +109,36 @@
     content:"";
     
 }
+
+h3{
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+p{
+    font-family: 'SF Pro Display', sans-serif;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    display: none;
+  }
+  .custom-scrollbar::-webkit-scrollbar-button {
+    display: none;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #4a4a4a;
+    border-radius: 20px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #5a5a5a;
+  }
+  
+  /* For Firefox */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #4a4a4a #1a1a1a;
+  }
