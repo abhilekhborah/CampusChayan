@@ -1,5 +1,9 @@
 // Select DOM elements
-const submitBtn = document.querySelector("#submit-btn");
+
+
+
+
+const submitBtn = document.getElementById("submit-btn");
 const submitBtn2 = document.querySelector("#submit-btn2");
 const questionInput = document.getElementById("questionInput");
 const questionInput2 = document.getElementById("questionInput2");
@@ -71,7 +75,7 @@ async function displayQuestions(recommendedQuestions) {
         const recommendedQuestion = recommendedQuestions[index].trim();
         
         questionDiv.innerHTML = `
-            <h3>Related Searches</h3>
+            <h3>Related Search</h3>
             <p>${recommendedQuestion}</p>
         `;
         
@@ -125,6 +129,7 @@ questionInput.addEventListener('keypress', (event) => {
     }
 });
 
+
 questionInput2.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
         handleInput(questionInput2);
@@ -147,3 +152,36 @@ let sidebar = document.querySelector(".sidebar");
 btn.addEventListener("click", function(){
     sidebar.classList.toggle("active");
 });
+
+$(document).ready(function () {
+    $('.textmate').textillate({
+        loop: true,
+        in:{
+            effect: 'pulse',
+            sync: false,
+            callback: function () {}
+        },
+        out:{
+            effect: 'pulse',
+            sync: false,
+            reverse:true,
+            callback: function () {}
+        }
+    });
+});
+
+$(document).ready(function () {
+    $('.textentry').textillate({
+        in:{
+            effect: 'fadeInRight',
+            sync: false,
+            delay:6,
+            initialDelay: 0,
+            callback: function () {}
+        },
+    });
+});
+
+
+
+
